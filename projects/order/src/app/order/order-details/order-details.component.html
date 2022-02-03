@@ -1,0 +1,29 @@
+<div class="order" *ngIf="order">
+  <div class="order__row">
+    <span>Order #{{order.id}}</span>
+    <span>{{order.date | date : 'HH:mm dd.MMM.yyyy' | uppercase}}</span>
+  </div>
+  <div class="order__row order__row--spaced">
+    <span>Total value: {{order.value}}</span>
+    <span>({{order.products.length}} produse)</span>
+  </div>
+  <div class="order__row order__row--spaced">
+    <span>{{order.courierId ? 'Taken by courier #' + order.courierId : 'Unassigned'}}</span>
+    <button class="order__button" [ngClass]="{'order__button--disabled': order.courierId}" [disabled]="order.courierId" (click)="takeOrder(order)"><span>Take order</span></button>
+  </div>
+  <div class="order__row order__row--spaced order__row--products">
+    <div class="order__product-and-divider" *ngFor="let product of order.products; let last=last">
+      <div class="order__product" [ngClass]="{'order__product--last': last}">
+        <div class="order__product-details">
+          <img [src]="product.photoUrl" alt="" class="order__image">
+          <span>{{product.name}}</span>
+          <span>{{product.quantity}} ({{product.quantity}} buc.)</span>
+        </div>
+        <span>{{product.price}} Lei</span>
+      </div>
+      <div class="order__divider" *ngIf="!last"></div>
+    </div>
+
+  </div>
+
+</div>

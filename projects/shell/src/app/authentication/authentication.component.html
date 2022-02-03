@@ -1,0 +1,17 @@
+<div class="authentication">
+
+  <span class="authentication__title">Authenticate</span>
+
+<!--  <div class="omrs-input-group">-->
+<!--    <label class="omrs-input-underlined">-->
+<!--      <input required>-->
+<!--      <span class="omrs-input-label">Email</span>-->
+<!--    </label>-->
+<!--  </div>-->
+  <input type="text" [formControl]="emailForm" placeholder="email" class="authentication__input">
+  <input type="text" [formControl]="nameForm" placeholder="name" class="authentication__input">
+
+  <button class="authentication__button" (click)="login()"><span>Login</span></button>
+</div>
+
+<div *ngIf="showLoginError" class="authentication__snackbar">{{errorMessage}}</div>

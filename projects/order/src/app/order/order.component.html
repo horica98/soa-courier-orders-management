@@ -1,0 +1,19 @@
+<div class="order__wrapper">
+  <div *ngFor="let order of orders$ | async; let last=last" class="order__mini-wrapper">
+    <div class="order">
+      <div class="order__row">
+        <span>Order #{{order.id}}</span>
+        <span>{{order.date | date : 'HH:mm dd.MM.yyyy'}}</span>
+      </div>
+      <div class="order__row order__row--spaced">
+        <span>Total value: {{order.value}}</span>
+        <span>({{order.products.length}} produse)</span>
+      </div>
+      <div class="order__row order__row--spaced">
+        <span>{{returnCourier(order)}}</span>
+        <button class="order__button" (click)="takeOrder(order)"><span>See order details</span></button>
+      </div>
+    </div>
+    <div *ngIf="!last" class="order__divider"></div>
+  </div>
+</div>

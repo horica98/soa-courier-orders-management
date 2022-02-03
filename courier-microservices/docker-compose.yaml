@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  gateway:
+    build: ./api-gateway
+    environment:
+      - IS_DOCKER=true
+    ports:
+      - "8080:5000"
+  assignment-service:
+    build: ./assignment-service
+  courier-service:
+    build: ./courier-service
+  order-service:
+    build: ./order-service
+  notification-service:
+    build: ./notification-service
