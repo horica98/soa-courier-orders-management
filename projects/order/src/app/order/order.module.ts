@@ -28,7 +28,7 @@ import { OrderServiceImpl } from './order.service';
     BrowserModule
   ],
   providers: [
-    { provide: InjectionTokens.OrderService, useClass: OrderServiceImpl }
+    { provide: InjectionTokens.OrderService, useClass: MockOrderService }
   ]
 })
 export class OrderModule { }
