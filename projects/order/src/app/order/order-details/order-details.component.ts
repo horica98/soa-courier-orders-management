@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 
-import { InjectionTokens, Order, OrderService } from '../../shared';
+import { InjectionTokens, Order, OrderService } from '@nike-core';
 
 @Component({
   selector: 'app-order-details',

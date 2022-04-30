@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-import { Courier } from './courier';
+import { Courier } from '../models';
 
 const URL = 'http://127.0.0.1:8080';
 

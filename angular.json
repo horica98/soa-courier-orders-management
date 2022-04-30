@@ -233,6 +233,68 @@
 					}
 				}
 			}
+		},
+		"nike-core": {
+			"projectType": "library",
+			"root": "projects/nike-core",
+			"sourceRoot": "projects/nike-core/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/nike-core/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/nike-core/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/nike-core/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/nike-core/src/test.ts",
+						"tsConfig": "projects/nike-core/tsconfig.spec.json",
+						"karmaConfig": "projects/nike-core/karma.conf.js"
+					}
+				}
+			}
+		},
+		"nike-shared": {
+			"projectType": "library",
+			"root": "projects/nike-shared",
+			"sourceRoot": "projects/nike-shared/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+						"project": "projects/nike-shared/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/nike-shared/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/nike-shared/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/nike-shared/src/test.ts",
+						"tsConfig": "projects/nike-shared/tsconfig.spec.json",
+						"karmaConfig": "projects/nike-shared/karma.conf.js"
+					}
+				}
+			}
 		}
 	},
 	"defaultProject": "shell"

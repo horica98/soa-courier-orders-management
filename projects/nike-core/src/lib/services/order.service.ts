@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { API_ULR, Order, OrderService } from '../shared';
+import {  Order, OrderService } from '../models';
+import { API_ULR } from '../utils';
 
 @Injectable()
 export class OrderServiceImpl implements OrderService{

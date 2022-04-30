@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import * as faker from 'faker';
-import { Order, OrderService, Product } from '../shared';
 import { DateTime } from 'luxon';
+
+import { Order, OrderService, Product } from '../models';
 
 const ORDERS_COUNT = 5;
 const PRODUCTS_COUNT = 4;

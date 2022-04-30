@@ -1,17 +1,14 @@
-
-
 import { NgModule } from '@angular/core';
-
-import { OrderRoutingModule } from './order-routing.module';
-import { OrderComponent } from './order.component';
-import { SharedModule } from '../shared/shared.module';
-import { InjectionTokens } from '../shared';
-import { MockOrderService } from './mock-order.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { OrderRoutingModule } from './order-routing.module';
+import { OrderComponent } from './order.component';
+
+import { InjectionTokens, MockOrderService, OrderServiceImpl } from '@nike-core'
+
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { OrderServiceImpl } from './order.service';
 
 
 @NgModule({
@@ -21,7 +18,6 @@ import { OrderServiceImpl } from './order.service';
   ],
   imports: [
     OrderRoutingModule,
-    SharedModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

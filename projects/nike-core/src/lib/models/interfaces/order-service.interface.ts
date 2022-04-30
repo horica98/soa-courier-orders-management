@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Order } from '../models/order';
+import { Order } from './order';
 
 export interface OrderService {
   getAll(): Observable<{ orders: Order[] }>;

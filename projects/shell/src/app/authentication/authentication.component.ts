@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '@nike-core';
 
 @Component({
   selector: 'app-authentication',
