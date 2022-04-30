@@ -14,12 +14,12 @@
       "@nike-core": [
 //        "dist/nike-core/nike-core",
 //        "dist/nike-core"
-        "projects/nike-core/src/index.ts"
+        "libs/nike-core/src/index.ts"
       ],
       "@nike-shared": [
 //        "dist/nike-shared/nike-shared",
 //        "dist/nike-shared"
-        "projects/nike-shared/src/index.ts"
+        "libs/nike-shared/src/index.ts"
       ]
     },
     "declaration": false,

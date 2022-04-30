@@ -1,4 +1,4 @@
-<div class="order" *ngIf="order">
+<div class="order order__details" *ngIf="order">
   <div class="order__row">
     <span>Order #{{order.id}}</span>
     <span>{{order.date | date : 'HH:mm dd.MMM.yyyy' | uppercase}}</span>

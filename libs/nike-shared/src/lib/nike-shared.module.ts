@@ -10,7 +10,7 @@ import { NikeCoreModule } from '@nike-core';
 
 
 function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
-  return new TranslateHttpLoader(httpClient, '../assets/i18n/', '.json');
+  return new TranslateHttpLoader(httpClient);
 }
 
 @NgModule({
@@ -23,14 +23,14 @@ function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
     ReactiveFormsModule,
     HttpClientModule,
     NikeCoreModule,
-    // TranslateModule.forRoot({
-    //   loader: {
-    //     provide: TranslateLoader,
-    //     useFactory: createTranslateLoader,
-    //     deps: [HttpClient],
-    //   },
-    //   defaultLanguage: 'ro',
-    // }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'ro',
+    }),
   ],
   exports: [
     // CommonModule,
