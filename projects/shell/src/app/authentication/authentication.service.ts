@@ -12,10 +12,12 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   login(email: string): Observable<{ courier: Courier | null }> {
+    return of({courier: null});
     return this.http.get<{ courier: Courier | null }>(`${URL}/api/couriers/${email}`);
   }
 
   register(email: string, name: string): Observable<any> {
+    return of({courier: null});
     return this.http.post<any>(`${URL}/api/couriers/`, {email, name});
   }
 }
