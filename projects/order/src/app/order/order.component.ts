@@ -28,7 +28,7 @@ export class OrderComponent implements OnInit {
   }
 
   takeOrder(order: Order): void {
-    this.router.navigate([`/orders/${order.id}`]);
+    this.router.navigate([`orders/${order.id}`]);
   }
 
   returnCourier(order: Order): string {

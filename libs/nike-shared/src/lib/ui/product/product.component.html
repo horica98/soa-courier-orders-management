@@ -1,0 +1,8 @@
+<div class="product" style="display: flex; flex-direction: column">
+  <div class="product__image-wrapper" (click)="clicked.emit()">
+    <img [src]="product.photoUrl" alt="product">
+  </div>
+  <span class="product__name">{{ product.name }}</span>
+  <strong class="product__name" style="font-weight: bold;" [innerHTML]="(product.price | price) + ' RON'"></strong>
+  <nike-button [text]="'Detalii'" (clicked)="clicked.emit()"></nike-button>
+</div>

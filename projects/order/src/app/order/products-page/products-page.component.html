@@ -1,0 +1,8 @@
+<div style="display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;">
+  <div *ngFor="let product of products" class="product__wrapper">
+    <nike-product [product]="product" (clicked)="goToProductDetails()"></nike-product>
+  </div>
+</div>

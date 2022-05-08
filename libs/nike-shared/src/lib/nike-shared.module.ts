@@ -7,6 +7,13 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { NikeCoreModule } from '@nike-core';
+import { ProductComponent } from './ui/product/product.component';
+import { MatCardModule } from '@angular/material/card';
+import { ButtonComponent } from './ui/button/button.component';
+import { MatButtonModule } from '@angular/material/button';
+import { ProductDetailsComponent } from './ui/product-details/product-details.component';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
@@ -14,11 +21,10 @@ function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
 }
 
 @NgModule({
-  declarations: [
-  ],
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -31,12 +37,22 @@ function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
       },
       defaultLanguage: 'ro',
     }),
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
   ],
-  exports: [
-    // CommonModule,
-    // BrowserModule,
-    // FormsModule,
-    // ReactiveFormsModule
-  ]
+  declarations: [
+    ProductComponent,
+    ButtonComponent,
+    ProductDetailsComponent
+  ],
+    exports: [
+        ProductComponent,
+        ProductDetailsComponent,
+        // CommonModule,
+        // BrowserModule,
+        // FormsModule,
+        // ReactiveFormsModule
+    ]
 })
 export class NikeSharedModule { }

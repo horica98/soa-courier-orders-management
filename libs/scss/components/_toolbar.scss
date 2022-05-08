@@ -1,9 +1,11 @@
+@import '../abstractions/variables';
+
 .toolbar {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #5478f0;
+  background-color: $main-color; //#5478f0;
   height: 60px;
   padding: 0 16px;
 
@@ -13,4 +15,9 @@
     font-size: 19px;
     font-weight: bold;
   }
+}
+
+.nike-logo {
+  margin-left: auto;
+  width: 50px;
 }

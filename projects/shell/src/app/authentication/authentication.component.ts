@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
@@ -19,10 +19,14 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private cha: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
+    console.log('intra')
+    // window.location.reload();
+    // this.cha.detectChanges();
   }
 
   login(): void {

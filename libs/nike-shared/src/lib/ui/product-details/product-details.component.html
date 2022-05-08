@@ -1,0 +1,18 @@
+<div class="product-details__wrapper">
+  <img [src]="product.photoUrl" alt="product">
+  <span class="product-details--spaced product-details--bold">{{product.name}}</span>
+  <span class="product-details--spaced product-details--bold">{{product.price}}</span>
+
+  <span class="product-details--spaced product-details__size-label">Select a size</span>
+  <div class="product-details__sizes-wrapper">
+    <div *ngFor="let size of sizes" class="product-details__size"
+         [ngClass]="{'product-details__size--filled': size === selectedSize}"
+         (click)="onSelectionChange(size)">
+      <span>{{size}}</span>
+    </div>
+  </div>
+
+  <div class="product-details__button-wrapper">
+    <nike-button [text]="'Add to cart'" [disabled]="!selectedSize" [fullWidth]="false" (clicked)="addToCart.emit(selectedSize)"></nike-button>
+  </div>
+</div>
