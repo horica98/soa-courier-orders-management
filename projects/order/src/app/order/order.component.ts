@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable, take } from 'rxjs';
 
@@ -14,10 +14,12 @@ export class OrderComponent implements OnInit {
   courier: any = null;
   constructor(
     private router: Router,
-    @Inject(InjectionTokens.OrderService) private orderService: OrderService
+    private cha: ChangeDetectorRef,
+  @Inject(InjectionTokens.OrderService) private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
+    this.cha.detectChanges();
     const user = localStorage.getItem('user');
     if (!user) {
       this.router.navigate(['/']);

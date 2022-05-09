@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 
@@ -15,10 +15,12 @@ export class OrderDetailsComponent implements OnInit {
   constructor(
     @Inject(InjectionTokens.OrderService) private orderService: OrderService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cha: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
+    this.cha.detectChanges();
     const user = localStorage.getItem('user');
     if(!user) {
       this.router.navigate(['orders']);

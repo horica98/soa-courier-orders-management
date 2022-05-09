@@ -6,7 +6,7 @@ import { Product } from '@nike-core';
   selector: 'nike-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductComponent {
   @Input() product: Product;

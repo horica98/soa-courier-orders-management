@@ -49,6 +49,7 @@ function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
     exports: [
         ProductComponent,
         ProductDetailsComponent,
+        ButtonComponent,
         // CommonModule,
         // BrowserModule,
         // FormsModule,

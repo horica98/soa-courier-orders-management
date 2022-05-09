@@ -8,16 +8,16 @@ import { FormControl } from '@angular/forms';
   selector: 'nike-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent {
   @Input() product: Product;
   @Output() sizeSelected: EventEmitter<any> = new EventEmitter<any>();
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
   sizes = BootsSizes;
-  selectedSize: number;
+  selectedSize?: number;
 
   onSelectionChange(size: number) {
-    this.selectedSize = size;
+    this.selectedSize = this.selectedSize === size ? undefined : size;
   }
 }

@@ -32,7 +32,8 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   addToCart($event: any): void {
-    console.log('addToCartd', $event);
+    // TODO: add to cart
+    this.router.navigate(['orders/cart']);
   }
 
   sizeSelected(size: number): void {

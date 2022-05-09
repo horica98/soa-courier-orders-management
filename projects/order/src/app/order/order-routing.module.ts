@@ -5,8 +5,12 @@ import { OrderComponent } from './order.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { ProductDetailsPageComponent } from './product-details-page/product-details-page.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
+  {
+    path: 'cart', component: CartComponent
+  },
   {
     path: 'products/:id', component: ProductDetailsPageComponent
   },

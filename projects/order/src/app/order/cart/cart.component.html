@@ -1,1 +1,38 @@
-<p>cart works!</p>
+<div style="display: flex; align-items: center; justify-content: center;">
+
+</div>
+<div class="order order__details" *ngIf="cart">
+  <div class="order__row">
+    <span>Estimated delivery</span>
+    <span>{{cart.estimatedDateTime?.toJSDate() | date : 'HH:mm dd.MMM.yyyy' | uppercase}}</span>
+  </div>
+  <div class="order__row order__row--spaced">
+    <span>Delivery address:</span>
+    <span>{{cart.deliveryAddress}}</span>
+  </div>
+  <div class="order__row order__row--spaced">
+    <span [innerHTML]="'Delivery fee: ' + (cart.deliveryCost | price) + ' RON'"></span>
+    <span>({{cart.products.length}} products)</span>
+  </div>
+  <div class="order__row order__row--spaced">
+    <span style="margin-left: 6px">Items</span>
+    <button class="order__button" (click)="makeOrder(cart)"><span>Checkout</span></button>
+  </div>
+  <div class="order__row order__row--spaced order__row--products">
+    <div class="order__product-and-divider" *ngFor="let product of cart.products; let last=last">
+      <div class="order__product" [ngClass]="{'order__product--last': last}">
+        <div class="order__product-details">
+          <img [src]="product.photoUrl" alt="" class="order__image">
+          <span>{{product.name}}</span>
+          <span>({{product.size}} size)</span>
+        </div>
+        <span [innerHTML]="(product.price | price) + ' RON'"></span>
+      </div>
+      <div class="order__divider"></div>
+    </div>
+    div
+    <span>Total: 123 lei</span>
+
+  </div>
+
+</div>

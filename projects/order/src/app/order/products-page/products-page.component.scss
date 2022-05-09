@@ -1,0 +1,13 @@
+.collapsed {
+  max-height: 50px !important;
+}
+
+.not-collapsed {
+  max-height: 350px !important;
+}
+
+.expansion-panel {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: all .3s ease-in-out;
+}

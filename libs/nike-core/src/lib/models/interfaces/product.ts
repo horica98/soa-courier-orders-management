@@ -4,3 +4,7 @@ export interface Product {
   quantity: number;
   price: number;
 }
+
+export interface PackageProduct extends Product {
+  size: number;
+}

@@ -25,8 +25,7 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('intra')
-    // window.location.reload();
-    // this.cha.detectChanges();
+    this.cha.detectChanges();
   }
 
   login(): void {

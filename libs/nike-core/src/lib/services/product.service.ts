@@ -15,4 +15,12 @@ export class ProductServiceImpl implements ProductService {
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>('');
   }
+
+  addProductToCart(product: Product, size: number): Observable<any> {
+    return this.http.post<Product>('', {product, size});
+  }
+
+  getCart(): Observable<any> {
+    return this.http.get<Product>('');
+  }
 }

@@ -1,3 +1,5 @@
+@import '../abstractions/variables';
+
 .authentication {
   background-color: #FAFAFA;
   display: flex;
@@ -27,7 +29,11 @@
     font-size: 14px;
     margin-top: 16px;
     width: 200px;
-    border: 2px solid #5478f0;
+    border: 2px solid $main-color; //#5478f0;
+
+    &--no-margin {
+      margin-top: 0;
+    }
   }
 
   &__button {

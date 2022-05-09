@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderModule } from './order/order.module';
@@ -14,7 +16,9 @@ import { OrderModule } from './order/order.module';
     AppRoutingModule,
     OrderModule
   ],
-  providers: [],
+  providers: [
+    AndroidPermissions
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
