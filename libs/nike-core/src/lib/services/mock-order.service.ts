@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import * as faker from 'faker';
 import { DateTime } from 'luxon';
 
-import { Order, OrderService, Product } from '../models';
+import { Cart, Order, OrderService, PackageProduct, Product } from '../models';
 
 const ORDERS_COUNT = 5;
 const PRODUCTS_COUNT = 4;
@@ -45,6 +45,18 @@ export class MockOrderService implements OrderService {
     return products;
   };
 
+  generateCart(): Cart {
+    const cart = {} as Cart;
+    cart.estimatedDateTime = DateTime.now().plus({days: 2, hour: 4});
+    cart.deliveryCost = 100;
+    cart.deliveryAddress = 'Bulevardul Decebal nr 17, bloc C86/A ap. 19 etaj 7, 410197, Oradea, Bihor';
+    cart.products = MockOrderService.generateProducts().map((prod: Product) => ({
+      ...prod,
+      size: faker.datatype.number({min: 40, max: 47})
+    }));
+    return cart;
+  }
+
   getAll(): Observable<{ orders: Order[] }> {
     return of({orders: this.orders});
   }
@@ -58,6 +70,23 @@ export class MockOrderService implements OrderService {
   }
 
   takeOrder(orderId: number, courierId: number): Observable<any> {
+    return of(null);
+  }
+
+  addToCart(product: PackageProduct, userId: number): Observable<{ cart: Cart }> {
+    return of({ cart: {} as Cart });
+  }
+
+  getCart(): Observable<any> {
+    return of(this.generateCart());
+  }
+
+  checkout(serId: number): Observable<any> {
+    return of(null);
+  }
+
+  getOrdersByUser(user: number): Observable<any> {
+    console.log('asd')
     return of(null);
   }
 }

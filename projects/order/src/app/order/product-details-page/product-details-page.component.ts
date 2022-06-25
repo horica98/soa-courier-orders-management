@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
-import { InjectionTokens, OrderService, Product, ProductService } from '@nike-core';
+import { InjectionTokens, OrderService, PackageProduct, Product, ProductService } from '@nike-core';
 
 @Component({
   selector: 'app-product-details-page',
@@ -10,33 +10,40 @@ import { InjectionTokens, OrderService, Product, ProductService } from '@nike-co
 })
 export class ProductDetailsPageComponent implements OnInit {
   product: Product;
+  selectedSize?: number;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private cha: ChangeDetectorRef,
     @Inject(InjectionTokens.ProductService) private productService: ProductService,
+    @Inject(InjectionTokens.OrderService) private orderService: OrderService,
   ) { }
 
   ngOnInit(): void {
     this.cha.detectChanges();
-    console.log('intra');
+    console.log('asd', this.route.snapshot.paramMap)
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.productService.getProductById(+id)
         .pipe(take(1))
-        .subscribe(product => this.product = product);
+        .subscribe(res => this.product = res.product);
     } else {
       this.router.navigate(['products']);
     }
   }
 
-  addToCart($event: any): void {
+  addToCart(): void {
     // TODO: add to cart
-    this.router.navigate(['orders/cart']);
+    const userId = JSON.parse(localStorage.getItem('user') || '')?.id;
+    const product: PackageProduct = {...this.product, size: this.selectedSize || 0};
+    this.orderService.addToCart(product, userId).pipe(take(1)).subscribe(res => {
+      console.log('res', res)
+      this.router.navigate(['orders/cart']);
+    })
   }
 
   sizeSelected(size: number): void {
-    console.log('sizeSelected', size);
+    this.selectedSize = size === this.selectedSize ? undefined : size;
   }
 }

@@ -1,7 +1,7 @@
 <div class="product-details__wrapper">
   <img [src]="product.photoUrl" alt="product">
   <span class="product-details--spaced product-details--bold">{{product.name}}</span>
-  <span class="product-details--spaced product-details--bold">{{product.price}}</span>
+  <span class="product-details--spaced product-details--bold" [innerHTML]="(product.price | price) + ' RON'"></span>
 
   <span class="product-details--spaced product-details__size-label">Select a size</span>
   <div class="product-details__sizes-wrapper">

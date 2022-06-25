@@ -6,6 +6,7 @@ import { take } from 'rxjs';
 import { InjectionTokens, Product, ProductService } from '@nike-core';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-products-page',
@@ -17,6 +18,10 @@ export class ProductsPageComponent implements OnInit {
 // TODO: EXTRACT PRODUCTS PAGE INTO DIFFERENT APP
   expanded = false;
   avatar: any;
+  window = window;
+  searchControl: FormControl;
+  private file: File | undefined;
+  imageSearchProductName: string;
 
   constructor(
     @Inject(InjectionTokens.ProductService) private productService: ProductService,
@@ -28,20 +33,28 @@ export class ProductsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.cha.detectChanges();
-    this.productService.getProducts()
-      .pipe(take(1))
-      .subscribe(products => this.products = products);
+    this.searchControl = new FormControl(undefined);
+    this.getProducts();
   }
 
-  goToProductDetails(): void {
-    this.router.navigate([`/orders/products/1`]);
+  getProducts(): void {
+    this.productService.getProducts()
+      .pipe(take(1))
+      .subscribe(products => {
+        this.products = products?.products;
+        this.cha.detectChanges();
+      });
+  }
+
+  goToProductDetails(product: Product): void {
+    this.router.navigate([`/orders/products/${product.id}`]);
   }
 
   get isHybrid(): boolean {
     return this.platform.ANDROID || this.platform.IOS;
   }
 
-  async takePicture() {
+  async takePicture(): Promise<void> {
     if (this.isHybrid) {
       this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
         async result => {
@@ -59,7 +72,7 @@ export class ProductsPageComponent implements OnInit {
     }
   }
 
-  openRequestInfoDialog() {
+  openRequestInfoDialog(): void {
     console.log('open dialog')
   }
 
@@ -70,10 +83,11 @@ export class ProductsPageComponent implements OnInit {
         allowEditing: true,
         resultType: CameraResultType.DataUrl
       });
-      console.log('imageData', imageData)
+      // console.log('imageData', imageData)
       this.avatar = imageData.dataUrl;
-      // this.avatar = this.dataUrltoFile(imageData.dataUrl, 'avatar.png', 'png');
-      console.log(this.avatar);
+      this.file = this.dataUrltoFile(imageData.dataUrl, 'file', 'png');
+      // console.log('FILE', this.file);
+      // console.log(this.avatar);
       // await this.saveProfileAvatar(this.avatar);
     } catch (error) {
       console.log('error')
@@ -93,9 +107,54 @@ export class ProductsPageComponent implements OnInit {
     return (new File([u8arr], filename, {type: format}));
   }
 
-  deletePhoto() {
+  deletePhoto(): void {
     console.log('deletePhoto');
-    this.avatar = null;
+    this.nullifySearchFields();
     setTimeout(() => this.cha.detectChanges(), 500);
+  }
+
+  search(): void {
+    // console.log(this.avatar);
+    if (this.file) {
+      let formData = new FormData();
+      formData.append('file', this.file);
+      this.productService.searchByPhoto(formData)
+        .pipe(take(1))
+        .subscribe(res => {
+          console.log('res', res);
+          this.imageSearchProductName = res.response;
+          document.getElementById(res.response)?.scrollIntoView({behavior: 'smooth'});
+        }, err => console.log(err));
+      // return Promise.resolve(undefined);
+    }
+  }
+
+  searchByText(): void {
+    console.log(this.searchControl.value);
+    if (!this.searchControl.value) {
+      this.getProducts();
+    } else {
+      this.productService.searchByName(this.searchControl.value)
+        .pipe(take(1))
+        .subscribe(res => {
+          this.products = res.products;
+          console.log(this.products)
+          this.nullifySearchFields();
+          this.cha.detectChanges();
+        })
+    }
+  }
+
+  nullifySearchFields(): void {
+    this.avatar = null;
+    this.file = undefined;
+    this.imageSearchProductName = '';
+  }
+
+  searchOnEnter(event: KeyboardEvent) {
+    console.log(event);
+    if (event.keyCode === 13) {
+      this.searchByText();
+    }
   }
 }

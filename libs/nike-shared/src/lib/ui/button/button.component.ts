@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 })
 export class ButtonComponent implements OnInit {
   @Input() text: string;
+  @Input() icon?: string;
   @Input() disabled =false;
   @Input() fullWidth = true;
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();

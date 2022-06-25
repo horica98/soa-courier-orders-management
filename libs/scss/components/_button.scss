@@ -25,8 +25,19 @@
   &--disabled {
     background-color: #BBBBBB;
   }
+
+  &--icon {
+    min-width: unset !important;
+    max-width: 40px !important;
+    width: 40px !important;
+    padding: 0 !important;
+  }
 }
 
 .mat-icon-button {
   border-radius: 4% !important;
+}
+
+.mat-flat-button {
+  line-height: 35px !important;
 }

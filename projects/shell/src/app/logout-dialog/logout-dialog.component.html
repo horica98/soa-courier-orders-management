@@ -1,0 +1,8 @@
+<div
+  style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%;">
+  <span class="material-icons" style="font-size: 20px; color: red; margin-top: 8px; margin-left: auto; cursor: pointer;" (click)="close(false)">close</span>
+  <div class="order__divider"></div>
+  <span style="font-size: 17px; font-weight: bold; margin-top: 16px;">Are you sure?</span>
+  <div class="order__divider" style="margin-bottom: 8px;"></div>
+  <nike-button [text]="'Logout'" (clicked)="close(true)" [fullWidth]="false"></nike-button>
+</div>

@@ -12,12 +12,12 @@ import { FormControl } from '@angular/forms';
 })
 export class ProductDetailsComponent {
   @Input() product: Product;
+  @Input() selectedSize?: number;
   @Output() sizeSelected: EventEmitter<any> = new EventEmitter<any>();
   @Output() addToCart: EventEmitter<any> = new EventEmitter<any>();
   sizes = BootsSizes;
-  selectedSize?: number;
 
   onSelectionChange(size: number) {
-    this.selectedSize = this.selectedSize === size ? undefined : size;
+    this.sizeSelected.emit(size);
   }
 }

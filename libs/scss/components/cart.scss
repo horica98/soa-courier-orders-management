@@ -1,0 +1,29 @@
+.cart {
+  &__empty-wrapper {
+    display: flex; margin: 16px; background-image: linear-gradient(to right bottom, transparentize(#000, .6), transparentize(#000, .6)),
+  url('../../assets/images/empty-cart.jpg');
+    width: calc(100% - 32px);
+    border-radius: 4px;
+    color: white;
+    flex-direction: column;
+    //height: 200px;
+    //border-image-repeat: stretch;
+    background-size: cover;
+    height: 600px;
+
+    @media (max-width: 768px) {
+      height: 400px;
+    }
+
+    @media (max-width: 430px) {
+      height: 200px;
+    }
+
+    span {
+      font-size: 19px;
+      font-weight: bold;
+      margin: 16px auto;
+      text-align: center;
+    }
+  }
+}

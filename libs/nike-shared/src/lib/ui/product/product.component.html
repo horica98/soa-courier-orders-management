@@ -1,8 +1,8 @@
-<div class="product" style="display: flex; flex-direction: column">
+<div class="product product__details-wrapper" [ngClass]="{'product__details-wrapper--selected': isSelected}" [id]="product.name">
   <div class="product__image-wrapper" (click)="clicked.emit()">
-    <img [src]="product.photoUrl" alt="product">
+    <img [src]="product.photoUrl | safe" alt="product">
   </div>
-  <span class="product__name">{{ product.name }}</span>
-  <strong class="product__name" style="font-weight: bold;" [innerHTML]="(product.price | price) + ' RON'"></strong>
+  <span class="product__name product--truncated" [matTooltip]="product.name" matTooltipPosition="above">{{ product.name }}</span>
+  <strong class="product__name product__name--bold" [innerHTML]="(product.price | price) + ' RON'"></strong>
   <nike-button [text]="'Detalii'" (clicked)="clicked.emit()"></nike-button>
 </div>

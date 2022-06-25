@@ -5,5 +5,7 @@ export interface Cart {
   products: PackageProduct[],
   deliveryAddress: string,
   deliveryCost: number,
-  estimatedDateTime: DateTime
+  estimatedDateTime: DateTime,
+  value: number,
+
 }

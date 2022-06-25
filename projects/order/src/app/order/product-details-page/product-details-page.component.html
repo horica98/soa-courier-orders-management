@@ -1,6 +1,7 @@
 <ng-container *ngIf="product">
   <nike-product-details [product]="product"
-                        (addToCart)="addToCart($event)"
+                        [selectedSize]="selectedSize"
+                        (addToCart)="addToCart()"
                         (sizeSelected)="sizeSelected($event)">
   </nike-product-details>
 </ng-container>

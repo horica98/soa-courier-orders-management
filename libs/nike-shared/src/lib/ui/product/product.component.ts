@@ -10,5 +10,6 @@ import { Product } from '@nike-core';
 })
 export class ProductComponent {
   @Input() product: Product;
+  @Input() isSelected = false;
   @Output() clicked: EventEmitter<any> = new EventEmitter<any>();
 }

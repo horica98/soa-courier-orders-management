@@ -17,6 +17,7 @@ import { CartComponent } from './cart/cart.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SnackbarService } from '../../../../../libs/nike-core/src/lib/services/snackbar.service';
 
 
 @NgModule({
@@ -40,8 +41,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule
   ],
   providers: [
-    { provide: InjectionTokens.OrderService, useClass: MockOrderService },
-    AndroidPermissions
+    // { provide: InjectionTokens.OrderService, useClass: OrderServiceImpl },
+    AndroidPermissions,
+    SnackbarService
   ]
 })
 export class OrderModule { }

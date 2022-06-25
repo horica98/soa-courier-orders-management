@@ -14,6 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProductDetailsComponent } from './ui/product-details/product-details.component';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
@@ -21,39 +27,50 @@ function createTranslateLoader(httpClient: HttpClient): TranslateLoader {
 }
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NikeCoreModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-      defaultLanguage: 'ro',
-    }),
-    MatCardModule,
-    MatButtonModule,
-    MatSelectModule,
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NikeCoreModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+            defaultLanguage: 'ro',
+        }),
+        MatCardModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatTooltipModule
+    ],
   declarations: [
     ProductComponent,
     ButtonComponent,
     ProductDetailsComponent
   ],
-    exports: [
-        ProductComponent,
-        ProductDetailsComponent,
-        ButtonComponent,
-        // CommonModule,
-        // BrowserModule,
-        // FormsModule,
-        // ReactiveFormsModule
-    ]
+  exports: [
+    ProductComponent,
+    ProductDetailsComponent,
+    ButtonComponent,
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatSnackBarModule
+  ]
 })
-export class NikeSharedModule { }
+export class NikeSharedModule {
+}

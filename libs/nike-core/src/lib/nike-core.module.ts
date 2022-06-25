@@ -2,25 +2,27 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
-import { InjectionTokens, PricePipe } from './utils';
-import { MockOrderService } from './services';
+import { InjectionTokens, PricePipe, SafePipe } from './utils';
+import { MockOrderService, OrderServiceImpl, ProductServiceImpl } from './services';
 import { MockProductService } from './services/mock-product.service';
 
 
 
 @NgModule({
   declarations: [
-    PricePipe
+    PricePipe,
+    SafePipe
   ],
   providers: [
-    { provide: InjectionTokens.OrderService, useClass: MockOrderService },
-    { provide: InjectionTokens.ProductService, useClass: MockProductService }
+    { provide: InjectionTokens.OrderService, useClass: OrderServiceImpl },
+    { provide: InjectionTokens.ProductService, useClass: ProductServiceImpl }
   ],
   imports: [
     CommonModule, HttpClientModule,
   ],
   exports: [
-    PricePipe
+    PricePipe,
+    SafePipe
   ]
 })
 export class NikeCoreModule { }

@@ -71,6 +71,10 @@
       margin-top: 12px;
     }
 
+    &--aligned {
+      max-width: 50%;
+    }
+
     &--products {
       background-color: white;
       flex-direction: column;
@@ -78,7 +82,17 @@
   }
 
   &__product-details {
-    display: flex; gap: 4px; align-items: center
+    display: flex; gap: 4px; align-items: center;
+
+    &--spaced {
+    margin-left: 6px;
+    }
+
+    &--fit-content {
+      min-width: fit-content;
+    }
+
+
   }
 
   &__product {

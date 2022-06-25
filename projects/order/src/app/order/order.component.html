@@ -1,19 +1,58 @@
-<div class="order__wrapper">
-  <div *ngFor="let order of orders$ | async; let last=last" class="order__mini-wrapper">
-    <div class="order">
-      <div class="order__row">
-        <span>Order #{{order.id}}</span>
-        <span>{{order.date | date : 'HH:mm dd.MM.yyyy'}}</span>
-      </div>
-      <div class="order__row order__row--spaced">
-        <span>Total value: {{order.value}}</span>
-        <span>({{order.products.length}} produse)</span>
-      </div>
-      <div class="order__row order__row--spaced">
-        <span>{{returnCourier(order)}}</span>
-        <button class="order__button" (click)="takeOrder(order)"><span>See order details</span></button>
+<!--<div class="order__wrapper">-->
+<!--  <div *ngFor="let order of orders$ | async; let last=last" class="order__mini-wrapper">-->
+<!--    <div class="order">-->
+<!--      <div class="order__row">-->
+<!--        <span>Order #{{order.id}}</span>-->
+<!--        <span>{{order.date | date : 'HH:mm dd.MM.yyyy'}}</span>-->
+<!--      </div>-->
+<!--      <div class="order__row order__row&#45;&#45;spaced">-->
+<!--        <span>Total value: {{order.value}}</span>-->
+<!--        <span>({{order.products.length}} produse)</span>-->
+<!--      </div>-->
+<!--      <div class="order__row order__row&#45;&#45;spaced">-->
+<!--        <span>{{returnCourier(order)}}</span>-->
+<!--        <button class="order__button" (click)="takeOrder(order)"><span>See order details</span></button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="!last" class="order__divider"></div>-->
+<!--  </div>-->
+<!--</div>-->
+<div *ngFor="let order of orders; let index=index" style="display: flex; flex-direction: column;">
+  <div class="order order__details">
+    <span>Order #{{index + 1}}</span>
+    <div class="order__row">
+      <span class="order__row--aligned">Estimated delivery</span>
+      <!--    <span class="order__row&#45;&#45;aligned">{{cart.estimatedDateTime?.toJSDate() | date : 'HH:mm dd.MMM.yyyy' | uppercase}}</span>-->
+      <span class="order__row--aligned">{{order.estimatedDateTime}}</span>
+    </div>
+    <div class="order__row order__row--spaced">
+      <span class="order__row--aligned">Delivery address:</span>
+      <span class="order__row--aligned">{{order.deliveryAddress}}</span>
+    </div>
+    <div class="order__row order__row--spaced">
+      <span class="order__row--aligned" [innerHTML]="'Delivery fee: ' + (order.deliveryCost | price) + ' RON'"></span>
+      <span class="order__row--aligned">({{order.products?.length}} products)</span>
+    </div>
+    <div class="order__row order__row--spaced">
+      <span class="order__row--aligned" style="margin-left: 6px">Total:</span>
+      <span class="order__row--aligned" [innerHTML]="(order.value + order.deliveryCost | price) + ' RON'"></span>
+    </div>
+    <div class="order__row order__row--spaced">
+      <span class="order__row--aligned" style="margin-left: 6px">Items</span>
+<!--      <button class="order__button" (click)="makeOrder(cart)"><span>Checkout</span></button>-->
+    </div>
+    <div class="order__row order__row--spaced order__row--products">
+      <div class="order__product-and-divider" *ngFor="let product of order.products; let last=last">
+        <div class="order__product" [ngClass]="{'order__product--last': last}">
+          <div class="order__product-details">
+            <img [src]="product.photoUrl" alt="" class="order__image">
+            <span>{{product.name}}</span>
+            <span class="order__product-details--fit-content">({{product.size}} size)</span>
+          </div>
+          <span  class="order__product-details--fit-content order__product-details--spaced" [innerHTML]="(product.price | price) + ' RON'"></span>
+        </div>
+        <div class="order__divider" *ngIf="!last"></div>
       </div>
     </div>
-    <div *ngIf="!last" class="order__divider"></div>
   </div>
 </div>

@@ -1,16 +1,17 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 
 import { InjectionTokens, Order, OrderService } from '@nike-core';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  styleUrls: ['./order.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderComponent implements OnInit {
-  orders$: Observable<Order[]> | undefined;
+  orders: any[] | undefined;
   courier: any = null;
   constructor(
     private router: Router,
@@ -19,14 +20,19 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('intra')
     this.cha.detectChanges();
     const user = localStorage.getItem('user');
     if (!user) {
       this.router.navigate(['/']);
       return;
     }
-    this.courier = JSON.parse(<string>user);
-    this.orders$ = this.orderService.getAll().pipe(map(res => res.orders));
+    this.orderService.getOrdersByUser(JSON.parse(user).id).pipe(take(1)).subscribe(res => {
+      this.orders = res.orders;
+      this.cha.detectChanges();
+    });
+    // this.courier = JSON.parse(<string>user);
+    // this.orders$ = this.orderService.getAll().pipe(map(res => res.orders));
   }
 
   takeOrder(order: Order): void {

@@ -1,24 +1,28 @@
 <div
-  style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; flex-direction: column;"
+  style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 24px auto; flex-direction: column;"
   [ngClass]="avatar ? 'not-collapsed' : 'collapsed'" class="expansion-panel">
   <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <input type="text" class="authentication__input authentication__input--no-margin" placeholder="Search">
-      <button mat-icon-button style="margin-left: 4px;"><span class="material-icons">search</span></button>
+    <div style="display: flex; align-items: center; justify-content: center; margin-left: 4px">
+<!--      <input type="text" class="authentication__input authentication__input&#45;&#45;no-margin" placeholder="Search">-->
+      <mat-form-field class="search" appearance="outline" *ngIf="searchControl" style="max-height: 40px">
+        <mat-label>Search</mat-label>
+        <input matInput [formControl]="searchControl" (keyup)="searchOnEnter($event)">
+      </mat-form-field>
+      <button mat-icon-button style="margin-left: 4px;" (click)="searchByText()"><span class="material-icons">search</span></button>
     </div>
-    <nike-button [text]="expanded ? 'Hide' : 'Show search options'" (click)="takePicture()"></nike-button>
+    <nike-button [text]="avatar ? 'Search by image' : 'Upload image'" [icon]="window.innerWidth <= 430 ? 'camera_alt' : undefined" (click)="avatar ? search() : takePicture()"></nike-button>
   </div>
   <div *ngIf="avatar" style="display: flex; align-items: flex-start; margin-top: 24px;">
     <img [src]="avatar" alt="" width="400px" height="400px" style="">
     <button (click)="deletePhoto()" mat-icon-button style="margin-left: -27px; margin-top: -15px;
-    border-radius: 50% !important;" color="warn"><span class="material-icons">close</span></button>
+    border-radius: 50% !important;" color="warn"><span class="material-icons">cancel</span></button>
   </div>
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     max-width: 1200px;
     margin: 0 auto;">
   <div *ngFor="let product of products" class="product__wrapper">
-    <nike-product [product]="product" (clicked)="goToProductDetails()"></nike-product>
+    <nike-product [product]="product" [isSelected]="product.name==imageSearchProductName" (clicked)="goToProductDetails(product)"></nike-product>
   </div>
 </div>
