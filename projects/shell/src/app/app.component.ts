@@ -1,11 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
-import { Images } from '@nike-core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { take } from 'rxjs';
+
+import { Images } from '@nike-core';
+
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-root',

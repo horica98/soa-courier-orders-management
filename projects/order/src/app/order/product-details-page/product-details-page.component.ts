@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
+
 import { InjectionTokens, OrderService, PackageProduct, Product, ProductService } from '@nike-core';
 
 @Component({
@@ -22,7 +23,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.cha.detectChanges();
-    console.log('asd', this.route.snapshot.paramMap)
+    console.log('param', this.route.snapshot.paramMap)
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.productService.getProductById(+id)
@@ -34,11 +35,9 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   addToCart(): void {
-    // TODO: add to cart
     const userId = JSON.parse(localStorage.getItem('user') || '')?.id;
     const product: PackageProduct = {...this.product, size: this.selectedSize || 0};
     this.orderService.addToCart(product, userId).pipe(take(1)).subscribe(res => {
-      console.log('res', res)
       this.router.navigate(['orders/cart']);
     })
   }

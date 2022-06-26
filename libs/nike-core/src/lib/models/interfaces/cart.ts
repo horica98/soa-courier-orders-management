@@ -1,5 +1,6 @@
-import { PackageProduct } from '@nike-core';
 import { DateTime } from 'luxon';
+
+import { PackageProduct } from '@nike-core';
 
 export interface Cart {
   products: PackageProduct[],

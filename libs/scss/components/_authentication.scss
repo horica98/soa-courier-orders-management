@@ -13,6 +13,7 @@
   border-radius: 4px;
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+
   span {
     font-size: 14px;
   }
@@ -94,7 +95,7 @@
     }
 
     &--login {
-       min-width: 195px;
+      min-width: 195px;
     }
   }
 
@@ -106,8 +107,7 @@
     border-radius: 4px;
     color: white;
     font-weight: bold;
-    text-align: center;
-  ;
+    text-align: center;;
   }
 
   .mat-error {
@@ -120,6 +120,7 @@
   .mat-dialog-container {
     padding: 8px !important;
   }
+
   margin: 8px;
   //background-color: #9F9F9F;
   border-radius: 6px;

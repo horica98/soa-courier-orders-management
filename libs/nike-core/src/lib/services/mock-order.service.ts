@@ -86,7 +86,6 @@ export class MockOrderService implements OrderService {
   }
 
   getOrdersByUser(user: number): Observable<any> {
-    console.log('asd')
     return of(null);
   }
 }

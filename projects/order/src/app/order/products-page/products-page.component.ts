@@ -1,12 +1,13 @@
 import { ChangeDetectorRef, Component, Inject, NgZone, OnInit } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { take } from 'rxjs';
 
-import { InjectionTokens, Product, ProductService } from '@nike-core';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
-import { FormControl } from '@angular/forms';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
+import { InjectionTokens, Product, ProductService } from '@nike-core';
 
 @Component({
   selector: 'app-products-page',
@@ -15,7 +16,6 @@ import { FormControl } from '@angular/forms';
 })
 export class ProductsPageComponent implements OnInit {
   products: Product[] = [];
-// TODO: EXTRACT PRODUCTS PAGE INTO DIFFERENT APP
   expanded = false;
   avatar: any;
   window = window;
@@ -151,7 +151,7 @@ export class ProductsPageComponent implements OnInit {
     this.imageSearchProductName = '';
   }
 
-  searchOnEnter(event: KeyboardEvent) {
+  searchOnEnter(event: KeyboardEvent): void {
     console.log(event);
     if (event.keyCode === 13) {
       this.searchByText();

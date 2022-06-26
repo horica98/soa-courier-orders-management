@@ -4,6 +4,15 @@
   border-radius: 4px;
   max-width: 760px;
 
+  &--ml {
+    margin-left: 6px;
+  }
+
+  &--rows-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__details {
     margin: 32px auto;
   }
@@ -82,10 +91,12 @@
   }
 
   &__product-details {
-    display: flex; gap: 4px; align-items: center;
+    display: flex;
+    gap: 4px;
+    align-items: center;
 
     &--spaced {
-    margin-left: 6px;
+      margin-left: 6px;
     }
 
     &--fit-content {
@@ -102,7 +113,7 @@
     align-items: center;
     justify-content: space-between;
 
-    &--last{
+    &--last {
       margin-bottom: 16px;
     }
   }

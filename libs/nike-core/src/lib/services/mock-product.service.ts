@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import * as faker from 'faker';
 
 import { Cart, PackageProduct, Product, ProductService } from '../models';
-import { DateTime } from 'luxon';
 
 @Injectable()
 export class MockProductService implements ProductService {

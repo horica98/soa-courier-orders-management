@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 
-import { Cart, InjectionTokens, MessageType, OrderService, ProductService } from '@nike-core';
-import { Router } from '@angular/router';
-import { SnackbarService } from '../../../../../../libs/nike-core/src/lib/services/snackbar.service';
+import { Cart, InjectionTokens, MessageType, OrderService, ProductService, SnackbarService } from '@nike-core';
 
 @Component({
   selector: 'app-cart',
@@ -41,7 +40,7 @@ export class CartComponent implements OnInit {
     }
   }
 
-  makeOrder(order: any) {
+  makeOrder(order: any): void {
     console.log('makeOrder');
     this.orderService.checkout(this.userId).pipe(take(1)).subscribe(() => {
       this.snackbarService.open('Order successfully created', MessageType.SUCCESS);

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Cart, Product, ProductService } from '../models';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { Cart, Product, ProductService } from '../models';
 
 const URL = 'http://127.0.0.1:5000';
 

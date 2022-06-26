@@ -17,7 +17,7 @@
 <!--    <div *ngIf="!last" class="order__divider"></div>-->
 <!--  </div>-->
 <!--</div>-->
-<div *ngFor="let order of orders; let index=index" style="display: flex; flex-direction: column;">
+<div *ngFor="let order of orders; let index=index" class="order--rows-wrapper">
   <div class="order order__details">
     <span>Order #{{index + 1}}</span>
     <div class="order__row">
@@ -34,11 +34,11 @@
       <span class="order__row--aligned">({{order.products?.length}} products)</span>
     </div>
     <div class="order__row order__row--spaced">
-      <span class="order__row--aligned" style="margin-left: 6px">Total:</span>
+      <span class="order__row--aligned order--ml">Total:</span>
       <span class="order__row--aligned" [innerHTML]="(order.value + order.deliveryCost | price) + ' RON'"></span>
     </div>
     <div class="order__row order__row--spaced">
-      <span class="order__row--aligned" style="margin-left: 6px">Items</span>
+      <span class="order__row--aligned order--ml">Items</span>
 <!--      <button class="order__button" (click)="makeOrder(cart)"><span>Checkout</span></button>-->
     </div>
     <div class="order__row order__row--spaced order__row--products">

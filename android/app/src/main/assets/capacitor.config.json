@@ -1,0 +1,6 @@
+{
+	"appId": "com.image.search.nike",
+	"appName": "nike image search shop",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

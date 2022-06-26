@@ -1,7 +1,15 @@
 .cart {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__empty-wrapper {
-    display: flex; margin: 16px; background-image: linear-gradient(to right bottom, transparentize(#000, .6), transparentize(#000, .6)),
-  url('../../assets/images/empty-cart.jpg');
+    display: flex;
+    margin: 16px;
+    background-image: linear-gradient(to right bottom, transparentize(#000, .6), transparentize(#000, .6)),
+    url('../../assets/images/empty-cart.jpg');
     width: calc(100% - 32px);
     border-radius: 4px;
     color: white;

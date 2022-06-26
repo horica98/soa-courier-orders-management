@@ -2,17 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { AuthenticationService, NikeCoreModule } from '@nike-core';
+import { AuthenticationService, NikeCoreModule, SnackbarService } from '@nike-core';
+import { NikeSharedModule } from '@nike-shared';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { NikeSharedModule } from '@nike-shared';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
-import { SnackbarService } from '../../../../libs/nike-core/src/lib/services/snackbar.service';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [

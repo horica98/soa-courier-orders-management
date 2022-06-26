@@ -1,11 +1,10 @@
-<div class="toolbar" style="overflow: hidden; position: fixed; top: 0;
- left: 0; right: 0; z-index: 99999;">
-  <a (click)="authAction()" style="cursor: pointer">{{getAuthText()}}</a>
+<div class="toolbar toolbar--sticky">
+  <a (click)="authAction()">{{getAuthText()}}</a>
   <a [fxHide]="!isLoggedIn()" [routerLink]="['/orders']">Orders</a>
   <a [fxHide]="!isLoggedIn()" [routerLink]="['/orders/cart']">Cart</a>
   <a [routerLink]="['/orders/products']">Products</a>
   <img [src]="images.NikeLogo" [fxHide]="window.innerWidth < 380" alt="logo" class="nike-logo">
 </div>
-<div style="overflow: auto; margin-top: 60px;">
+<div class="app-content">
   <router-outlet></router-outlet>
 </div>

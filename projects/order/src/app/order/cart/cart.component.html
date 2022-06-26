@@ -1,12 +1,10 @@
-<div style="display: flex; align-items: center; justify-content: center;">
-
-</div>
 <ng-template #emptyCart>
   <div class="cart__empty-wrapper">
     <span>Your cart is empty.</span>
     <span>Continue searching for your boots.</span>
   </div>
 </ng-template>
+
 <div class="order order__details" *ngIf="cart; else emptyCart">
   <div class="order__row">
     <span class="order__row--aligned">Estimated delivery</span>
@@ -22,11 +20,11 @@
     <span class="order__row--aligned">({{cart.products?.length}} products)</span>
   </div>
   <div class="order__row order__row--spaced">
-    <span class="order__row--aligned" style="margin-left: 6px">Total:</span>
+    <span class="order__row--aligned order--ml">Total:</span>
     <span class="order__row--aligned"  [innerHTML]="(cart.value + cart.deliveryCost | price) + ' RON'"></span>
   </div>
   <div class="order__row order__row--spaced">
-    <span class="order__row--aligned" style="margin-left: 6px">Items</span>
+    <span class="order__row--aligned order--ml">Items</span>
     <button class="order__button" (click)="makeOrder(cart)"><span>Checkout</span></button>
   </div>
   <div class="order__row order__row--spaced order__row--products">
